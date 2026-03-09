@@ -2,18 +2,18 @@
 
 /* ─── TOKENS ─────────────────────────────────────────── */
 :root {
-  --bg:           #0a0c10;
+  --bg:           #010248;
   --bg2:          #0f1117;
   --bg3:          #161b22;
   --border:       #21262d;
   --border-hover: #30363d;
-  --accent:       #00d9a3;
-  --accent2:      #4f8ef7;
-  --accent3:      #f7884f;
+  --accent:       #7795f8;
+  --accent2:      #47d0ef;
+  --accent3:      #e7560d;
   --accent4:      red;
   --accent5:      green;
   --text:         #e6edf3;
-  --text-muted:   #8b949e;
+  --text-muted:   #a3b3c5;
   --text-subtle:  #484f58;
   --font-mono:    'JetBrains Mono', monospace;
   --font-display: 'Syne', sans-serif;

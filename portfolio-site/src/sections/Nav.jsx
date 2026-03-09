@@ -71,6 +71,11 @@ export default function Nav({ initials = 'JP' }) {
 
   }, [location.pathname])
 
+  /* Close mobile menu when route changes */
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
   const close = () => setMenuOpen(false)
 
   return (
@@ -120,22 +125,22 @@ export default function Nav({ initials = 'JP' }) {
         <span className={styles.bar} />
       </button>
 
-      {/* mobile drawer */}
-      <ul
+     {/* mobile drawer */}
+     <ul
         id="mobile-drawer"
         className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ''}`}
         aria-hidden={!menuOpen}
         role="list"
       >
-        {LINKS.map(({ href, label, id }) => (
+        {LINKS.map(({ label, id, to }) => (
           <li key={id}>
-            <a
-              href={href}
+            <Link
+              to={to}
               className={`${styles.drawerLink} ${activeId === id ? styles.active : ''}`}
               onClick={close}
             >
               {label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

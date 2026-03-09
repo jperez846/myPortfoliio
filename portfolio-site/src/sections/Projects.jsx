@@ -42,6 +42,8 @@ function ProjectCard({ project }) {
 }
 
 export default function Projects({ projects }) {
+  console.log("These are my projects : " );
+  console.log(projects);
   return (
     <section id="projects" className={styles.section} aria-label="Projects">
       <SectionHeader num="02" title="Projects" />

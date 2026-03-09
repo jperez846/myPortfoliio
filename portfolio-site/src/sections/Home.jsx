@@ -2,20 +2,52 @@ import Tag from '../components/Tag'
 import Terminal  from '../components/Terminal'
 import styles from './Home.module.css'
 
+// const TERMINAL_LINES = [
+//   { prompt: '➜ portfolio git:(main)', cmd: 'git status' },
+//   { out: 'On branch main' },
+//   { out: 'Changes not staged for commit:' },
+//   { out: '  modified:   src/App.tsx' },
+//   { out: '  modified:   src/components/Projects.tsx' },
+//   { out: '  new file:   src/components/Terminal.tsx' },
+
+//   { prompt: '➜ portfolio git:(main)', cmd: 'git add .' },
+//   { out: '✓ Staged 6 files for commit' },
+
+//   { prompt: '➜ portfolio git:(main)', cmd: 'git commit -m "feat(portfolio): base implementation for showcasing projects and skillset"' },
+//   { out: '[main 3fa9c21] feat(portfolio): base implementation for showcasing projects and skillset' },
+//   { out: ' 6 files changed, 214 insertions(+)' },
+//   { out: ' create mode 100644 src/components/Terminal.tsx' },
+
+//   { prompt: '➜ portfolio git:(main)', cmd: 'git push origin main' },
+//   { out: 'Enumerating objects: 18, done.' },
+//   { out: 'Counting objects: 100% (18/18), done.' },
+//   { out: 'Compressing objects: 100% (11/11), done.' },
+//   { out: 'Writing objects: 100% (12/12), 2.45 KiB | 2.45 MiB/s, done.' },
+//   { out: 'remote: 🚀 Portfolio updated successfully' },
+//   { out: 'remote: Your commit will make recruiters slightly more impressed.' },
+//   { out: 'To git@github.com:jperez846/myPortfoliio.git' },
+//   { out: '   a12c1d4..3fa9c21  main -> main' },
+// ];
+
 const TERMINAL_LINES = [
-  { prompt: '➜ ~', cmd: 'kubectl get pods -n argocd' },
-  { out: 'argocd-server-abc123        1/1   Running   0   2m' },
-  { out: 'argocd-repo-server-xyz      1/1   Running   0   2m' },
-  { prompt: '➜ ~', cmd: 'git push origin main' },
-  { out: '✓ Pushed · CI triggered · Deploying...' },
-]
+  { prompt: '➜ portfolio git:(main)', cmd: 'git add .' },
+  { out: '✓ Staged files for commit' },
+
+  { prompt: '➜ portfolio git:(main)', cmd: 'git commit -m "feat(portfolio): base implementation for showcasing projects and skillset"' },
+  { out: '[main 3fa9c21] feat(portfolio): base implementation for showcasing projects and skillset' },
+  { out: '6 files changed, 214 insertions(+)' },
+
+  { prompt: '➜ portfolio git:(main)', cmd: 'git push origin main' },
+  { out: '✓ Pushed to github.com:jperez846/myPortfolio.git' },
+  { out: ':) Portfolio updated · recruiters impressed' },
+];
 
 /**
  * Props:
  *   person  — { name, bio, available }
  *   titles  — [{ label, variant }]
  */
-export default function Home({ person, titles }) {
+export default function Home({ person, titles, projects }) {
   const { name, bio, available } = person
   const [firstName, ...rest] = name.split(' ')
   const lastName = rest.join(' ')
@@ -23,9 +55,9 @@ export default function Home({ person, titles }) {
   return (
     <section id="home" className={styles.section} aria-label="Introduction">
 
-      {/* {available && (
+      {available && (
         <p className={styles.eyebrow}>Available for new opportunities</p>
-      )} */}
+      )}
 
       <h1 className={styles.name}>
         {firstName} {lastName}

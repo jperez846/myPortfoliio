@@ -14,6 +14,8 @@ import {
   projects,
 } from './data/portfolio'
 
+import {details} from './data/projects'
+
 export default function App() {
   return (
     <div className='App'>
@@ -23,7 +25,7 @@ export default function App() {
         <Routes>
         {/* <Home person={person} titles={titles} /> */}
         <Route path="/" element={<Home person={person} titles={titles} />} />
-        <Route path="/projects" element={<Projects projects={projects} />} />
+        <Route path="/projects" element={<Projects projects={details} />} />
         <Route path="/resume" element={<Resume skills={skills} toolchain={toolchain} resumePath="/resume.pdf" />} />
         <Route path="/contact" element={<Contact contact={contact} />} />
 
