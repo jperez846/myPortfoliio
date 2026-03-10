@@ -7,6 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: aws-secrets   
     defaults:
       run:
         working-directory: portfolio-site   # ← add this once here
