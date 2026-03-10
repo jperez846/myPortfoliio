@@ -10,7 +10,7 @@ const CARDS = [
 export default function Contact({ contact }) {
   return (
     <section id="contact" className={styles.section} aria-label="Contact">
-      <SectionHeader num="04" title="Contact" />
+      <SectionHeader title="Contact" />
 
       <div className={styles.grid}>
         {CARDS.map(({ key, icon, label, hrefFn, valueFn }) => (

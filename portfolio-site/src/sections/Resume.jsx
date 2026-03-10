@@ -5,7 +5,7 @@ import styles from './Resume.module.css'
 export default function Resume({ skills, toolchain, resumePath }) {
   return (
     <section id="resume" className={styles.section} aria-label="Resume">
-      <SectionHeader num="03" title="Resume" />
+      <SectionHeader title="Resume" />
 
       <div className={styles.layout}>
 

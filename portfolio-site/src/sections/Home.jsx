@@ -1,6 +1,8 @@
 import Tag from '../components/Tag'
 import Terminal  from '../components/Terminal'
 import styles from './Home.module.css'
+import { Link } from 'react-router-dom';
+
 
 // const TERMINAL_LINES = [
 //   { prompt: '➜ portfolio git:(main)', cmd: 'git status' },
@@ -76,10 +78,14 @@ export default function Home({ person, titles, projects }) {
 
       <div className={styles.cta}>
         <a href="#projects" className={`${styles.btn} ${styles.primary}`}>
-          → See my work
+            <Link to='/projects'>
+            → See my work
+            </Link>
         </a>
         <a href="#contact" className={`${styles.btn} ${styles.ghost}`}>
-          Get in touch
+            <Link to='/contact'>
+                Get in touch
+            </Link>
         </a>
       </div>
 

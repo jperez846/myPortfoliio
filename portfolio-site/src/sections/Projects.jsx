@@ -46,7 +46,7 @@ export default function Projects({ projects }) {
   console.log(projects);
   return (
     <section id="projects" className={styles.section} aria-label="Projects">
-      <SectionHeader num="02" title="Projects" />
+      <SectionHeader title="Projects" />
       <div className={styles.grid}>
         {projects.map(p => <ProjectCard key={p.id} project={p} />)}
       </div>
