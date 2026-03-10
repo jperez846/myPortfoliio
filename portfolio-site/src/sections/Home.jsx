@@ -77,16 +77,13 @@ export default function Home({ person, titles, projects }) {
       <p className={styles.bio}>{bio}</p>
 
       <div className={styles.cta}>
-        <a href="#projects" className={`${styles.btn} ${styles.primary}`}>
-            <Link to='/projects'>
-            → See my work
-            </Link>
-        </a>
-        <a href="#contact" className={`${styles.btn} ${styles.ghost}`}>
-            <Link to='/contact'>
-                Get in touch
-            </Link>
-        </a>
+      <Link to="/projects" className={`${styles.btn} ${styles.primary}`}>
+        → See my work
+      </Link>
+
+      <Link to="/contact" className={`${styles.btn} ${styles.ghost}`}>
+        Get in touch
+      </Link>
       </div>
 
       <Terminal lines={TERMINAL_LINES} />
