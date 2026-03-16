@@ -26,7 +26,7 @@ export default function App() {
         {/* <Home person={person} titles={titles} /> */}
         <Route path="/" element={<Home person={person} titles={titles} />} />
         <Route path="/projects" element={<Projects projects={details} />} />
-        <Route path="/resume" element={<Resume skills={skills} toolchain={toolchain} resumePath="/resume.pdf" />} />
+        <Route path="/resume" element={<Resume skills={skills} toolchain={toolchain} resumePath="/resume03.pdf" />} />
         <Route path="/contact" element={<Contact contact={contact} />} />
 
 

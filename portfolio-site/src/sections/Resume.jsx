@@ -20,7 +20,7 @@ export default function Resume({ skills, toolchain, resumePath }) {
           ) : (
             <div className={styles.placeholder}>
               <span className={styles.pdfIcon}>📄</span>
-              <p>Drop <code>resume02.pdf</code> in <code>/public</code></p>
+              <p>Drop <code>resume03.pdf</code> in <code>/public</code></p>
               <p>and update <code>resumePath</code> in App.jsx</p>
             </div>
           )}
