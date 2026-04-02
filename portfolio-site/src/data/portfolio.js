@@ -3,7 +3,7 @@ export const person = {
     initials:  'jperez',
     bio: `Result-oriented software engineer with expertise in full stack web development,
   test automation, and cloud-based systems. I build scalable, secure solutions —
-  from Kubernetes clusters and CI/CD pipelines to React & Java services.
+  from Kubernetes clusters and CI/CD pipelines to React, Java and Python services.
   Previously at Intuit; Explored teaching the next generation of engineers at CodePath × Meta. 
   Currently: started job searching after a hiatus`,
     available: true,
