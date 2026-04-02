@@ -142,36 +142,64 @@ export const details = [
         'RestAssured',
         'Jest'
       ],
-      github: 'https://github.com/jperez846/AutomationPractice',
+      github: '',
       demo: null,
     },
-    // {
-    //   id: 'portfolio-website',
-    //   title: 'Cloud-Hosted Portfolio Platform',
-    //   description:
-    //     'Personal engineering portfolio built to showcase automation frameworks, platform engineering projects, and DevOps workflows. The site is deployed as a production-ready static web application with automated CI/CD deployment.',
-    //   highlights: [
-    //     'Built modern React application using Vite',
-    //     'Deployed static hosting infrastructure using AWS S3',
-    //     'Configured CloudFront CDN for global delivery',
-    //     'Implemented automated deployment using GitHub Actions'
-    //   ],
-    //   arch: [
-    //     'React + Vite Frontend',
-    //     'AWS S3 Static Hosting',
-    //     'CloudFront CDN',
-    //     'GitHub Actions CI/CD'
-    //   ],
-    //   tools: [
-    //     'React',
-    //     'Vite',
-    //     'AWS S3',
-    //     'CloudFront',
-    //     'GitHub Actions'
-    //   ],
-    //   github: 'https://github.com/jperez846/myPortfoliio/tree/main/portfolio-site',
-    //   demo: null
-    // }
+    {
+      id: 'portfolio-website',
+      title: 'Cloud-Hosted Portfolio Platform',
+      description:
+        'Personal engineering portfolio built to showcase automation frameworks, platform engineering projects, and DevOps workflows. The site is deployed as a production-ready static web application with automated CI/CD deployment.',
+      highlights: [
+        'Built modern React application using Vite',
+        'Deployed static hosting infrastructure using AWS S3',
+        'Configured CloudFront CDN for global delivery',
+        'Implemented automated deployment using GitHub Actions'
+      ],
+      arch: [
+        'React + Vite Frontend',
+        'AWS S3 Static Hosting',
+        'CloudFront CDN',
+        'GitHub Actions CI/CD'
+      ],
+      tools: [
+        'React',
+        'Vite',
+        'AWS S3',
+        'CloudFront',
+        'GitHub Actions'
+      ],
+      github: '',
+      demo: null
+    },
+    {
+      id: 'data-scraping-alerting-platform',
+      title: 'Web Scraping & Real-Time Alerting System',
+      description:
+        'Built a data scraping and alerting platform to extract and monitor metadata from social media and e-commerce platforms. Leveraged APIs and proxy networks to gather insights and trigger real-time alerts for high-demand product drops.',
+      highlights: [
+        'Developed Python-based web scraping scripts using BeautifulSoup and Requests to extract structured data from dynamic web pages',
+        'Integrated TikTok API to collect and analyze user account metadata for insights and trend tracking',
+        'Engineered real-time alerting system using Bright Data proxy network to monitor e-commerce sites for exclusive product availability',
+        'Automated workflows to notify users instantly when target conditions were met, improving response time for limited releases'
+      ],
+      arch: [
+        'Python Scraping Engine (BeautifulSoup, Requests)',
+        'TikTok API Integration',
+        'Bright Data Proxy Network',
+        'Event-Based Alerting System'
+      ],
+      tools: [
+        'Python',
+        'BeautifulSoup',
+        'Requests',
+        'TikTok API',
+        'Bright Data',
+        'Proxy Networks'
+      ],
+      github: '',
+      demo: null
+    }
     
     ];
     
