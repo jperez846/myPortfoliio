@@ -1,40 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@600;700&display=swap');
 
 /* ─── TOKENS ─────────────────────────────────────────── */
 :root {
-  --bg:           #010248;
-  --bg2:          #0f1117;
-  --bg3:          #161b22;
-  --border:       #21262d;
-  --border-hover: #30363d;
-  --accent:       #7795f8;
-  --accent2:      #47d0ef;
-  --accent3:      #e7560d;
-  --accent4:      red;
-  --accent5:      green;
-  --text:         #e6edf3;
-  --text-muted:   #a3b3c5;
-  --text-subtle:  #484f58;
+  --bg:           #050812;
+  --bg2:          #080d1e;
+  --bg3:          #0c1230;
+  --border:       #1a2247;
+  --border-hover: #2a3566;
+  --accent:       #4f8ef7;
+  --accent2:      #818cf8;
+  --accent3:      #f59e0b;
+  --accent4:      #f87171;
+  --accent5:      #34d399;
+  --text:         #e2e8f0;
+  --text-muted:   #94a3b8;
+  --text-subtle:  #334155;
+  --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
-  --font-display: 'Syne', sans-serif;
   --nav-h:        64px;
   --max-w:        1100px;
-  --radius:       10px;
+  --radius:       8px;
 }
 
 /* ─── RESET ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* html { scroll-behavior: smooth; } */
-
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
@@ -43,23 +43,29 @@ body {
   flex-direction: column;
 }
 
-main {
-  flex: 1;
-}
+main { flex: 1; }
 
 a { text-decoration: none; color: inherit; }
 
-/* ─── BACKGROUND ─────────────────────────────────────── */
-/* this is what we use for the grid effect on the bg of the page */
+/* ─── BACKGROUND — nebula glow ───────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 30%, rgba(79,142,247,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 72%, rgba(129,140,248,0.06) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
 
+/* ─── BACKGROUND — dot grid ──────────────────────────── */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(0,217,163,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,217,163,0.025) 1px, transparent 1px);
-  background-size: 44px 44px;
+  background-image: radial-gradient(rgba(79,142,247,0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
   pointer-events: none;
   z-index: 0;
 }
@@ -67,14 +73,33 @@ body::after {
 /* ─── SCROLLBAR ──────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
 
-/* ─── ANIMATIONS ─────────────────────────────────────── */
-/* @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1.5rem 3rem;
+  font-size: 0.72rem;
+  color: var(--text-subtle);
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.05em;
+  font-family: var(--font-sans);
 }
 
-@keyframes blink {
-  50% { opacity: 0; }
-} */
+/* ─── FOCUS ──────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

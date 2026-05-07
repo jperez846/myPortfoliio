@@ -1,93 +1,88 @@
+import { motion } from 'motion/react'
 import Tag from '../components/Tag'
-import Terminal  from '../components/Terminal'
+import Terminal from '../components/Terminal'
 import styles from './Home.module.css'
-import { Link } from 'react-router-dom';
-
-
-// const TERMINAL_LINES = [
-//   { prompt: '➜ portfolio git:(main)', cmd: 'git status' },
-//   { out: 'On branch main' },
-//   { out: 'Changes not staged for commit:' },
-//   { out: '  modified:   src/App.tsx' },
-//   { out: '  modified:   src/components/Projects.tsx' },
-//   { out: '  new file:   src/components/Terminal.tsx' },
-
-//   { prompt: '➜ portfolio git:(main)', cmd: 'git add .' },
-//   { out: '✓ Staged 6 files for commit' },
-
-//   { prompt: '➜ portfolio git:(main)', cmd: 'git commit -m "feat(portfolio): base implementation for showcasing projects and skillset"' },
-//   { out: '[main 3fa9c21] feat(portfolio): base implementation for showcasing projects and skillset' },
-//   { out: ' 6 files changed, 214 insertions(+)' },
-//   { out: ' create mode 100644 src/components/Terminal.tsx' },
-
-//   { prompt: '➜ portfolio git:(main)', cmd: 'git push origin main' },
-//   { out: 'Enumerating objects: 18, done.' },
-//   { out: 'Counting objects: 100% (18/18), done.' },
-//   { out: 'Compressing objects: 100% (11/11), done.' },
-//   { out: 'Writing objects: 100% (12/12), 2.45 KiB | 2.45 MiB/s, done.' },
-//   { out: 'remote: 🚀 Portfolio updated successfully' },
-//   { out: 'remote: Your commit will make recruiters slightly more impressed.' },
-//   { out: 'To git@github.com:jperez846/myPortfoliio.git' },
-//   { out: '   a12c1d4..3fa9c21  main -> main' },
-// ];
+import { Link } from 'react-router-dom'
 
 const TERMINAL_LINES = [
-  { prompt: '➜ portfolio git:(main)', cmd: 'git add .' },
+  { prompt: '➜ awebos git:(main)', cmd: 'git add .' },
   { out: '✓ Staged files for commit' },
 
-  { prompt: '➜ portfolio git:(main)', cmd: 'git commit -m "feat(portfolio): base implementation for showcasing projects and skillset"' },
-  { out: '[main 3fa9c21] feat(portfolio): base implementation for showcasing projects and skillset' },
-  { out: '6 files changed, 214 insertions(+)' },
+  { prompt: '➜ awebos git:(main)', cmd: 'git commit -m "feat(platform): modernize client legacy system to microservices"' },
+  { out: '[main a7f2c31] feat(platform): modernize client legacy system to microservices' },
+  { out: '12 files changed, 847 insertions(+), 203 deletions(-)' },
 
-  { prompt: '➜ portfolio git:(main)', cmd: 'git push origin main' },
-  { out: '✓ Pushed to github.com:jperez846/myPortfolio.git' },
-  { out: ':) Portfolio updated · recruiters impressed' },
-];
+  { prompt: '➜ awebos git:(main)', cmd: 'git push origin main' },
+  { out: '✓ Pushed to github.com:awebos/client-platform.git' },
+  { out: ':) Client system modernized · delivered on time' },
+]
 
-/**
- * Props:
- *   person  — { name, bio, available }
- *   titles  — [{ label, variant }]
- */
-export default function Home({ person, titles, projects }) {
-  const { name, bio, available } = person
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+}
+
+export default function Home({ person, titles }) {
+  const { name, bio, available, availableText } = person
   const [firstName, ...rest] = name.split(' ')
   const lastName = rest.join(' ')
+  const paragraphs = bio.split('\n\n').filter(Boolean)
 
   return (
-    <section id="home" className={styles.section} aria-label="Introduction">
-
+    <motion.section
+      id="home"
+      className={styles.section}
+      aria-label="Introduction"
+      variants={container}
+      initial="hidden"
+      animate="show"
+    >
       {available && (
-        <p className={styles.eyebrow}>Available for new opportunities</p>
+        <motion.p className={styles.eyebrow} variants={item}>
+          {availableText ?? 'Available for new opportunities'}
+        </motion.p>
       )}
 
-      <h1 className={styles.name}>
+      <motion.h1 className={styles.name} variants={item}>
         {firstName} {lastName}
-        {/* <span className={styles.accent}>{lastName}</span> */}
-      </h1>
+      </motion.h1>
 
-      <div className={styles.tags} role="list" aria-label="Professional titles">
+      <motion.div
+        className={styles.tags}
+        role="list"
+        aria-label="Professional titles"
+        variants={item}
+      >
         {titles.map(({ label, variant }) => (
           <Tag key={label} variant={variant} role="listitem">
             {label}
           </Tag>
         ))}
-      </div>
+      </motion.div>
 
-      <p className={styles.bio}>{bio}</p>
+      <motion.div className={styles.bioBlock} variants={item}>
+        {paragraphs.map((p, i) => (
+          <p key={i} className={styles.bio}>{p}</p>
+        ))}
+      </motion.div>
 
-      <div className={styles.cta}>
-      <Link to="/projects" className={`${styles.btn} ${styles.primary}`}>
-        → See my work
-      </Link>
+      <motion.div className={styles.cta} variants={item}>
+        <Link to="/contact" className={`${styles.btn} ${styles.primary}`}>
+          Let's talk
+        </Link>
+        <Link to="/projects" className={`${styles.btn} ${styles.ghost}`}>
+          See our work
+        </Link>
+      </motion.div>
 
-      <Link to="/contact" className={`${styles.btn} ${styles.ghost}`}>
-        Get in touch
-      </Link>
-      </div>
-
-      <Terminal lines={TERMINAL_LINES} />
-
-    </section>
+      <motion.div variants={item}>
+        <Terminal lines={TERMINAL_LINES} />
+      </motion.div>
+    </motion.section>
   )
 }

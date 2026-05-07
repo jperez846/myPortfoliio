@@ -14,11 +14,11 @@
 .section::before {
   content: '';
   position: absolute;
-  top: 20%;
-  left: -5%;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(0,217,163,0.07) 0%, transparent 68%);
+  top: 15%;
+  left: -8%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(79,142,247,0.07) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -29,19 +29,19 @@
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1.6rem;
-  animation: fadeUp 0.5s 0.1s both;
 }
 
 .eyebrow::before {
   content: '';
   display: inline-block;
-  width: 22px;
+  width: 20px;
   height: 1px;
   background: var(--accent);
   opacity: 0.7;
@@ -49,19 +49,16 @@
 }
 
 /* ── name ── */
-/* .name {
+.name {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  font-size: clamp(3rem, 9vw, 7rem);
   font-weight: 800;
   line-height: 0.92;
   letter-spacing: -0.03em;
-  color: var(--text);
-  animation: fadeUp 0.55s 0.25s both;
-} */
-
-.accent {
-  color: var(--accent);
-  display: block;
+  background: linear-gradient(135deg, var(--text) 30%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ── title tags ── */
@@ -70,18 +67,21 @@
   flex-wrap: wrap;
   gap: 0.55rem;
   margin-top: 1.8rem;
-  animation: fadeUp 0.55s 0.42s both;
 }
 
 /* ── bio ── */
-.bio {
-  max-width: 580px;
+.bioBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-top: 2rem;
-  font-size: 0.88rem;
-  line-height: 1.9;
+  max-width: 600px;
+}
+
+.bio {
+  font-size: 0.95rem;
+  line-height: 1.85;
   color: var(--text-muted);
-  /* white-space: pre-line; */
-  animation: fadeUp 0.55s 0.58s both;
 }
 
 /* ── CTA ── */
@@ -90,34 +90,32 @@
   flex-wrap: wrap;
   gap: 0.85rem;
   margin-top: 2.4rem;
-  animation: fadeUp 0.55s 0.72s both;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.72rem 1.5rem;
+  padding: 0.75rem 1.75rem;
   border-radius: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .primary {
   background: var(--accent);
-  color: var(--bg);
+  color: #fff;
   border: 1px solid var(--accent);
-  font-weight: 700;
 }
 
 .primary:hover {
   background: transparent;
   color: var(--accent);
-  box-shadow: 0 0 22px rgba(0,217,163,0.18);
+  box-shadow: 0 0 28px rgba(79,142,247,0.25);
 }
 
 .ghost {

@@ -1,77 +1,37 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import styles from './Nav.module.css'
-import { Link, useLocation } from 'react-router-dom';
-
-
-
+import { Link, useLocation } from 'react-router-dom'
 
 const LINKS = [
-  { href: '#home',     label: 'home',     id: 'home', to: '/'},
-  { href: '#projects', label: 'projects', id: 'projects', to: '/projects'},
-  { href: '#resume',   label: 'resume',   id: 'resume', to: '/resume'},
-  { href: '#contact',  label: 'contact',  id: 'contact', to: '/contact'},
+  { label: 'home',     id: 'home',     to: '/'        },
+  { label: 'projects', id: 'projects', to: '/projects' },
+  { label: 'resume',   id: 'resume',   to: '/resume'   },
+  { label: 'contact',  id: 'contact',  to: '/contact'  },
 ]
 
-/**
- * Props:
- *   initials — e.g. 'JP' → renders 'JP.dev' as the logo
- */
 export default function Nav({ initials = 'JP' }) {
-
   const location = useLocation()
-
-
-
   const [scrolled,  setScrolled]  = useState(false)
   const [activeId,  setActiveId]  = useState('home')
   const [menuOpen,  setMenuOpen]  = useState(false)
 
-  /* frosted-glass nav after 20px scroll */
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  /* highlight nav link for whichever section is in view */
-  // This is mostly for scrolling effect but we are implementing pages using react router.
-  /******************************** */
-  // useEffect(() => {
-
-  //   const sections = LINKS
-  //     .map(({ id }) => document.getElementById(id))
-  //     .filter(Boolean)
-
-  //   const observer = new IntersectionObserver(
-  //     entries => {
-  //       entries.forEach(entry => {
-  //         if (entry.isIntersecting) setActiveId(entry.target.id)
-  //       })
-  //     },
-  //     { rootMargin: '-40% 0px -55% 0px' }
-  //   )
-
-  //   sections.forEach(s => observer.observe(s))
-  //   return () => sections.forEach(s => observer.unobserve(s))
-  // }, [])
-
-  /* prevent body scroll while mobile drawer is open */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  useEffect(()=>{
-    console.log("current link: ");
+  useEffect(() => {
     const currentLink = LINKS.find(link => link.to === location.pathname)
-    console.log(currentLink)
-    if(currentLink){
-      setActiveId(currentLink.id)
-    }
-
+    if (currentLink) setActiveId(currentLink.id)
   }, [location.pathname])
 
-  /* Close mobile menu when route changes */
   useEffect(() => {
     setMenuOpen(false)
   }, [location.pathname])
@@ -79,36 +39,38 @@ export default function Nav({ initials = 'JP' }) {
   const close = () => setMenuOpen(false)
 
   return (
-    // <nav>
-    //   <Link to="/">Home</Link>
-  
-    // </nav>
     <nav
       className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}
       role="navigation"
       aria-label="Main navigation"
     >
       {/* logo */}
-      <Link className={styles.logo} to='/'>
-      {initials}.dev
-      </Link>
+      <motion.div
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+      >
+        <Link className={styles.logo} to="/">
+          {initials}.dev
+        </Link>
+      </motion.div>
 
       {/* desktop links */}
       <ul className={styles.links} role="list">
-        {LINKS.map(({ href, label, id, to}) => (
-          // <li key={id}>
-          //   <a
-          //     href={href}
-          //     className={`${styles.link} ${activeId === id ? styles.active : ''}`}
-          //   >
-          //     {label}
-          //   </a>
-          // </li>
-          <li key={id}>
-          <Link to={to} className={`${styles.link} ${activeId === id ? styles.active : ''}`} >
-          {label}
-          </Link>
-          </li>
+        {LINKS.map(({ label, id, to }, i) => (
+          <motion.li
+            key={id}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 + i * 0.06, ease: 'easeOut' }}
+          >
+            <Link
+              to={to}
+              className={`${styles.link} ${activeId === id ? styles.active : ''}`}
+            >
+              {label}
+            </Link>
+          </motion.li>
         ))}
       </ul>
 
@@ -125,25 +87,38 @@ export default function Nav({ initials = 'JP' }) {
         <span className={styles.bar} />
       </button>
 
-     {/* mobile drawer */}
-     <ul
-        id="mobile-drawer"
-        className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ''}`}
-        aria-hidden={!menuOpen}
-        role="list"
-      >
-        {LINKS.map(({ label, id, to }) => (
-          <li key={id}>
-            <Link
-              to={to}
-              className={`${styles.drawerLink} ${activeId === id ? styles.active : ''}`}
-              onClick={close}
-            >
-              {label}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {/* mobile drawer — AnimatePresence handles enter/exit */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.ul
+            id="mobile-drawer"
+            className={styles.drawer}
+            role="list"
+            aria-label="Mobile navigation"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+          >
+            {LINKS.map(({ label, id, to }, i) => (
+              <motion.li
+                key={id}
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.07, duration: 0.28, ease: 'easeOut' }}
+              >
+                <Link
+                  to={to}
+                  className={`${styles.drawerLink} ${activeId === id ? styles.active : ''}`}
+                  onClick={close}
+                >
+                  {label}
+                </Link>
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }

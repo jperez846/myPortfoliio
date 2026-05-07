@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+import { motion, useInView } from 'motion/react'
 import SectionHeader from '../components/SectionHeader'
 import Tag from '../components/Tag'
 import styles from './Projects.module.css'
@@ -19,10 +21,20 @@ function ArchDiagram({ nodes }) {
   )
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, index }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
   const { title, description, arch, tools, github, demo } = project
+
   return (
-    <article className={styles.card}>
+    <motion.article
+      ref={ref}
+      className={styles.card}
+      initial={{ opacity: 0, y: 28 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.45, delay: (index % 3) * 0.08, ease: 'easeOut' }}
+      whileHover={{ y: -4 }}
+    >
       <div className={styles.demo}>
         <ArchDiagram nodes={arch} />
       </div>
@@ -33,22 +45,30 @@ function ProjectCard({ project }) {
           {tools.map(t => <Tag key={t} variant="chip">{t}</Tag>)}
         </div>
         <div className={styles.links}>
-          {github && <a href={github} className={styles.link}>⬡ GitHub</a>}
-          {demo   && <a href={demo}   className={styles.link}>↗ Live demo</a>}
+          {github && (
+            <a href={github} className={styles.link} target="_blank" rel="noopener noreferrer">
+              ⬡ GitHub
+            </a>
+          )}
+          {demo && (
+            <a href={demo} className={styles.link} target="_blank" rel="noopener noreferrer">
+              ↗ Live demo
+            </a>
+          )}
         </div>
       </div>
-    </article>
+    </motion.article>
   )
 }
 
 export default function Projects({ projects }) {
-  console.log("These are my projects : " );
-  console.log(projects);
   return (
     <section id="projects" className={styles.section} aria-label="Projects">
       <SectionHeader title="Projects" />
       <div className={styles.grid}>
-        {projects.map(p => <ProjectCard key={p.id} project={p} />)}
+        {projects.map((p, i) => (
+          <ProjectCard key={p.id} project={p} index={i} />
+        ))}
       </div>
     </section>
   )

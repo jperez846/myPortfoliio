@@ -1,63 +1,64 @@
 export const person = {
-    name:      'Jesus Perez',
-    initials:  'jperez',
-    bio: `Result-oriented software engineer with expertise in full stack web development,
-  test automation, and cloud-based systems. I build scalable, secure solutions —
-  from Kubernetes clusters and CI/CD pipelines to React, Java and Python services.
-  Previously at Intuit; Explored teaching the next generation of engineers at CodePath × Meta. 
-  Currently: started job searching after a hiatus`,
-    available: true,
-  }
-  
-  export const titles = [
-    { label: 'Full Stack Developer', variant: 'accent'  },
-    { label: 'DevOps Enthusiast',    variant: 'blue'    },
-    { label: 'Test Automation Advocate',        variant: 'orange'  },
-    { label: 'Super Cool Guy', variant: 'green'  },
-  ]
-  
-  export const contact = {
-    email:          'jesup032v@gmail.com',
-    linkedin:       'https://linkedin.com/in/jesusmperez/',
-    linkedinHandle: '/in/jesusmperez',
-    github:         'https://github.com/jperez846',   // TODO
-    githubHandle:   '@jperez846',                     // TODO
-  }
-  
-  export const skills = [
-    { label: 'Java / Spring Boot',   pct: 90 },
-    { label: 'React-Redux / TypeScript / Javascript',   pct: 90 },
-    { label: 'Test Automation',      pct: 93 },
-    { label: 'Kubernetes / Docker / Jenkins',  pct: 80 },
-    { label: 'AWS (EC2, RDS)',       pct: 80 },
-  ]
-  
-  export const toolchain = [
-    'Selenium','TestNG','JUnit','Jest','Jenkins',
-    'PostgreSQL','GraphQL','Node.js','Express.js',
-    'Redux','Postman','Splunk','ArgoCD','Python','Groovy',
-  ]
-  
-  export const projects = [
-    
-    {
-      id:    'intuit-dev-studio',
-      title: 'Intuit Dev Studio',
-      description:
-        'Internal integrated development studio built at Intuit with React, Redux, TypeScript, and Java. Reduced engineer onboarding from six months to hours with full E2E test coverage.',
-      arch:   ['React + Redux', 'TypeScript', 'Java REST API', 'Selenium / TestNG'],
-      tools:  ['React', 'Redux', 'TypeScript', 'Java', 'Selenium', 'TestNG'],
-      github: 'private',
-      demo:   null,
-    },
-    {
-      id:    'gitops-argocd',
-      title: 'GitOps with ArgoCD',
-      description:
-        'GitOps deployment setup using ArgoCD on Kubernetes. Declarative app delivery with auto-sync, rollback support, and health monitoring across namespaces.',
-      arch:   ['ArgoCD', 'Kubernetes', 'Minikube / EKS', 'Helm Charts'],
-      tools:  ['Kubernetes', 'ArgoCD', 'Helm', 'Minikube', 'Docker'],
-      github: 'https://github.com/jperez846/AutomationPractice',
-      demo:   null,
-    },
-  ]
+  name:     'Jesus Perez',
+  initials: 'JP',
+  bio: `After 7 years building enterprise software at Intuit, I kept noticing the same thing: great businesses held back by technology that couldn't keep up with them.
+
+That's why I founded AwebO.S. — a web development agency built to help businesses of all sizes upgrade, modernize, and grow through better software. Whether you need a fresh web application built from the ground up, a legacy system brought into the modern era, or a reliable engineering partner to support and maintain what you already have — we handle it.
+
+I started this because I believe every business deserves technology that actually works for them. If yours doesn't yet, let's talk.`,
+  available:     true,
+  availableText: 'Now accepting new clients',
+}
+
+export const titles = [
+  { label: 'Founder, AwebO.S.',        variant: 'accent' },
+  { label: 'Full Stack Engineer',       variant: 'blue'   },
+  { label: 'Enterprise Modernization',  variant: 'orange' },
+  { label: 'Web Development Agency',    variant: 'blue'   },
+]
+
+export const contact = {
+  email:          'jperezdev@awebos.com',
+  linkedin:       'https://linkedin.com/in/jesusmperez/',
+  linkedinHandle: '/in/jesusmperez',
+  github:         'https://github.com/jperez846',
+  githubHandle:   '@jperez846',
+}
+
+export const skills = [
+  { label: 'Full Stack Engineering',      pct: 92 },
+  { label: 'Java / Spring Boot',          pct: 90 },
+  { label: 'Cloud & DevOps (AWS, Docker)', pct: 83 },
+  { label: 'System Architecture & APIs',  pct: 88 },
+  { label: 'Test Automation',             pct: 90 },
+]
+
+export const toolchain = [
+  'React', 'TypeScript', 'Node.js', 'Java', 'Spring Boot',
+  'PostgreSQL', 'MongoDB', 'GraphQL', 'REST APIs',
+  'Docker', 'Kubernetes', 'AWS', 'Jenkins', 'GitHub Actions',
+  'Python', 'Groovy', 'Splunk',
+]
+
+export const projects = [
+  {
+    id:    'financial-integration-dsl',
+    title: 'Financial Integration DSL Platform',
+    description:
+      'Internal developer platform automating partner onboarding workflows — validation, script generation, and connectivity testing — reducing integration timelines from months to hours.',
+    arch:   ['ANTLR Grammar Parser', 'Java Template Engine', 'Groovy Script Generation', 'Financial Institution Connectors'],
+    tools:  ['Java', 'ANTLR', 'Groovy', 'Spring Boot'],
+    github: 'private',
+    demo:   null,
+  },
+  {
+    id:    'intuit-dev-studio',
+    title: 'Intuit Dev Studio',
+    description:
+      'Full stack React and Java platform for data ingestion, transformation, and integration testing at enterprise scale. Reduced engineer onboarding from six months to hours.',
+    arch:   ['React + Redux', 'TypeScript', 'Java REST API', 'Selenium / TestNG'],
+    tools:  ['React', 'Redux', 'TypeScript', 'Java', 'Selenium'],
+    github: 'private',
+    demo:   null,
+  },
+]

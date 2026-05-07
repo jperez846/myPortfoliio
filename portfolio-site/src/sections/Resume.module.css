@@ -1,174 +1,173 @@
 .section {
-    position: relative;
-    z-index: 1;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 6rem 3rem;
-  }
-  
-  /* ── two-column layout ── */
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 6rem 3rem;
+}
+
+/* ── two-column layout ── */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+/* ── PDF viewer ── */
+.viewer {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg2);
+  aspect-ratio: 8.5 / 11;
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* placeholder when no PDF provided */
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  text-align: center;
+  padding: 2rem;
+}
+
+.pdfIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder code {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+/* ── sidebar ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── card ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+}
+
+.cardHeading {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+/* ── skill bars ── */
+.skillRow {
+  margin-bottom: 1rem;
+}
+
+.skillRow:last-child {
+  margin-bottom: 0;
+}
+
+.skillLabel {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.bar {
+  width: 100%;
+  height: 4px;
+  background: var(--bg3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+}
+
+/* ── toolchain chips ── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+/* ── download button ── */
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.downloadBtn:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 28px rgba(79,142,247,0.25);
+}
+
+/* ── responsive ── */
+@media (max-width: 900px) {
   .layout {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 2.5rem;
-    margin-top: 3rem;
-    align-items: start;
+    grid-template-columns: 1fr;
   }
-  
-  /* ── PDF viewer ── */
+
   .viewer {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--bg2);
+    position: static;
     aspect-ratio: 8.5 / 11;
-    position: sticky;
-    top: calc(var(--nav-h) + 1.5rem);
+    max-height: 600px;
   }
-  
-  .iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1.5rem;
   }
-  
-  /* placeholder when no PDF provided */
-  .placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    color: var(--text-muted);
-    font-size: 0.78rem;
-    line-height: 1.8;
-    text-align: center;
-    padding: 2rem;
-  }
-  
-  .pdfIcon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .placeholder code {
-    color: var(--accent);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-  }
-  
-  /* ── sidebar ── */
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-  
-  /* ── card ── */
-  .card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    transition: border-color 0.2s;
-  }
-  
-  .card:hover {
-    border-color: var(--border-hover);
-  }
-  
-  .cardHeading {
-    font-family: var(--font-display);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.25rem;
-  }
-  
-  /* ── skill bars ── */
-  .skillRow {
-    margin-bottom: 1rem;
-  }
-  
-  .skillRow:last-child {
-    margin-bottom: 0;
-  }
-  
-  .skillLabel {
-    display: block;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.03em;
-  }
-  
-  .bar {
-    width: 100%;
-    height: 4px;
-    background: var(--bg3);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  
-  .fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 2px;
-    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  /* ── toolchain chips ── */
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-  }
-  
-  /* ── download button ── */
-  .downloadBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.5rem;
-    border-radius: 6px;
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .downloadBtn:hover {
-    background: var(--accent);
-    color: var(--bg);
-    box-shadow: 0 0 24px rgba(0,217,163,0.2);
-  }
-  
-  /* ── responsive ── */
-  @media (max-width: 900px) {
-    .layout {
-      grid-template-columns: 1fr;
-    }
-  
-    .viewer {
-      position: static;
-      aspect-ratio: 8.5 / 11;
-      max-height: 600px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .section {
-      padding: 4rem 1.5rem;
-    }
-  }
+}
